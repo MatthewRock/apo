@@ -1,4 +1,12 @@
-* Przyjęcie zamówienia:
-**
-* Posadzenie klienta
-*
+* Określenie Aktorów pierwszo- i drugoplanowych.
+  Kto korzysta z systemu
+* Identyfikacja Aktorów i ich podstawowych celów.
+  Kto, co, gdzie, kiedy.
+* Stworzenie listy aktor-cel
+* Zidentyfikowanie przypadków użycia(use case):
+  + CRUD (Create Retrieve Update Delete) <- reduce to one
+
+* Organizer:
+** Linki:
+   [[http://www.staff.amu.edu.pl/~jacekmar/dapo320.html][Strona APO]]
+   [[http://www.staff.amu.edu.pl/~jacekmar/dapo/wykl2.pdf][Wykład 2]]
