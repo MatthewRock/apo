@@ -1,0 +1,57 @@
+-zgłoszenie obsługi stolika
+
+Przypadek użycia "Zgłoszenie obsługi stolika"- Kelner odbiera zgłoszenie i
+podchodzi do zajętego przez klientów stolika. Sprawdza, czy dany stolik
+nie jest tego dnia zarezerwowany i system wysyła mu informację zwrotną.
+W wypadku istnienia rezerwacji, która mogłaby kolidować z wizytą gości,
+przesadza ich do innego stolika. Wysyła następnie do systemu informację,
+że ustanawia się kelnerem prowadzącym obsługę danego stolika
+i zaznajamia gości z kartą dań.
+
+	-przyjęcie zamówienia
+	
+Przypadek użycia "Przyjęcia zamówienia"- Kelner podchodzi do stolika 
+zgłaszającego gotowość do złożenia zamówienia.Odbiera wszystkie zamówienia
+i przesyła je do systemu jako zamówienia przypisane do danego stolika.
+System przesyła następnie złożone zamówienie do dalszego przetworzenia.
+W wypadku przekroczenia granicznej wartości zamówienia system
+automatycznie zamyka rachunek, w przeciwnym wypadku daje taką możliwość,
+ale umożliwia składanie dalszych zamówień.
+	
+	-podzielenie rachunku
+	
+Przypadek użycia "Podzielenie rachunku"- Kelner rozdziela stolik którego rachunek
+ma być podzielony na osobne grupy.Do każdnej z nich przyporządkowuje zamówione przez nich
+dania. Od teraz każdą grupę system traktować będzie jak osobny stolik w każdym aspekcie,
+wyjąwszy fakt, że fizycznie nie zajmuje ona dodatkowego stolika. Każda z grup
+kontynuuje zamawianie potraw bądź też prosi o osobny rachunek.
+
+	-przyniesienie rachunku i zakończenie obsługi stolika
+	
+Przypadek użycia "Zakończenie obsługi stolika"- Na prośbę klienta kelner wysyła
+żądanie drukowania rachunku. System informuje go kiedy ta czynność się zakończy.
+Kelner przymosi następnie rachunek do stolika, a jeśli przekroczona została
+graniczna wartość zamówienia, dyskretnie upewnia się, że rachunek został uregulowany.
+W przeciwnym wypadku, lub kiedy już to zrobi, kelner zgłasza koniec obsługi
+i gotowość obsłużenia kolejnego stolika.
+
+
+	-ostrzeganie o rezerwacjach stolików
+	
+Przypadek użycia "Ostrzeganie o rezerwacjach"- Kelner otrzymuje ostrzeżenie,
+jeśli stolik wciąż jest zajęty na godzinę przed tym, kiedy rozpocząć ma się
+kolejna rezerwacja. Kelner informuje o tym gości, którzy następnie
+podejmują decyzje, czy chcą przesiąść się do innego, wolnego stolika,
+czy też wolą skrócić wizytę. Następnie kelner informuje system o zmianie stolika,
+lub też kończy obsługę.
+
+	-przyjęcie reklamacji i komentarzy
+	
+Przypadek użycia "Przyjęcie reklamacji  i komentarzy"- W dowolnym momencie
+obsługi na żądanie klienta kelner przyjmuje reklamację, lub komentarz do zamówienia.
+Komentarz zapisywany jest przez system w zamówieniu i jest dostępny dla
+pracowników kuchni, którzy biorą go pod uwagę przy przygotowaniu potraw.
+Reklamacja trafia bezpośrednio do szefa kuchni, który zajmuje się
+jej rozpatrzeniem, a także do ogólnego rejestru wraz z identyfikatorem
+przyjmującego ją kelnera. System informuje o decyzji szefa kuchni kelnera,
+który następnie podejmuje odpowiednie kroki.
