@@ -1,0 +1,296 @@
+Restauracja
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Zbiór przypadków użycia w formie skróconej
+
+
+
+
+
+
+
+
+
+
+Autorzy:
+
+
+Paweł Pelczar
+
+Mateusz Malisz- korekta wersji 1.0
+
+Piotr Ryży- nic
+
+
+
+Wersja 1.1
+10.11.2015
+
+
+Spis treści: Autor: Paweł Pelczar
+
+ 1  Obsługa stolików przez kelnera za pomocą urządzenia przenośnego.
+ 1.1  Komunikacja kelnera z klientem
+ 1.1.1  Przypadek użycia "Zgłoszenie obsługi stolika"
+ 1.1.2  Przypadek użycia "Przyjęcia zamówienia"
+ 1.1.3  Przypadek użycia "Podzielenie rachunku"
+ 1.1.4  Przypadek użycia "Zakończenie obsługi stolika"
+ 1.2  Komunikacja kelnera z zespołem
+ 1.2.1  Przypadek użycia "Ostrzeganie o rezerwacjach"
+ 1.2.2  Przypadek użycia "Przyjęcie reklamacji  i komentarzy"
+ 2  Synchronizacja działań w kuchni i komunikacja z resztą zespołu.
+ 2.1  Komunikacja z kelnerem
+ 2.1.1  Przypadek użycia "Przyjęcie zamówienia od kelnera"
+ 2.1.2  Przypadek użycia "Zgłoszenie zapotrzebowania na kelnera"
+ 2.2  Komunikacja ze spiżarnią
+ 2.2.1  Przypadek użycia "Wysłanie zapotrzebowania na składniki"
+ 3  Kontrola stanu spiżarni i wydawanie składników do kuchni
+ 3.1  Wydawanie składników do kuchni
+ 3.1.1  Przypadek użycia "Zgłoszenie braku składnika potrawy"
+ 3.1.2  Przypadek użycia "Zgłoszenie niskiego stanu zaopatrzenia"
+ 3.1.3  Przypadek użycia "Uzależnienie menu od stanu spiżarni"
+ 4  Synchronizacja działów i usługi zewnętrzne
+ 4.1  Synchronizacja kelnerów
+ 4.1.1  Przypadek użycia "rezerwacje i obłożenie stolików"
+ 4.1.2  Przypadek użycia "synchronizacja zgłoszeń kelnerów"
+
+Słownik: Autor: Paweł Pelczar
+
+Klient- osoba korzystająca z usług restauracji.
+Zamówienie- lista dań żądanych przez klienta.
+Rezerwacja- dokonywana telefonicznie jest żądaniem zachowania wolnego stolika w sprecyzowanym czasie.
+Rachunek- paragon fiskalny zawierający wszystkie zamówione przez klienta pozycje.
+Dział- wydzielona część restauracji odpowiedzialna za jedną ze składowych jej funkcjonowania.
+System- zbiór aplikacji i sprzętu komputerowego zapewniających w sumie opisane funkcjonalności.
+Kelner- pracownik wyposażony w urządzenie mobilne kontaktujący się z 	klientem
+Graniczna wartość rachunku- zdefiniowana przez właściciela wartość powyżej której monitorujemy klientów w celu uniknięcia oszustwa.
+Stanowisko kucharskie- wydzielona część kuchni odpowiedzialna za przygotowanie jednego typu potraw.
+Kolejka stanowiska- wyświetlana na danym stanowisku kucharskim kolejka oczekujących na przygotowanie potraw.
+
+
+
+ 1  Obsługa stolików przez kelnera za pomocą urządzenia przenośnego.
+
+	 1.1  Komunikacja kelnera z klientem
+
+ 		1.1.1  UC Autor: Paweł Pelczar Przypadek użycia "Zgłoszenie obsługi stolika"- Kelner odbiera zgłoszenie i podchodzi do zajętego przez klientów stolika. Sprawdza, czy dany stolik nie jest tego dnia zarezerwowany i system wysyła mu informację zwrotną. W wypadku istnienia rezerwacji, która mogłaby kolidować z wizytą gości, przesadza ich do innego stolika. Wysyła następnie do systemu informację,że ustanawia się kelnerem prowadzącym obsługę danego stolika i zaznajamia gości z kartą dań.
+ 		1.1.2  UC Autor: Paweł Pelczar Przypadek użycia "Przyjęcia zamówienia"- Kelner podchodzi do stolika zgłaszającego gotowość do złożenia zamówienia. Odbiera wszystkie zamówienia i przesyła je do systemu jako zamówienia przypisane do danego stolika. System przesyła następnie złożone zamówienie do dalszego przetworzenia. W wypadku przekroczenia granicznej wartości zamówienia system automatycznie zamyka rachunek, w przeciwnym wypadku daje taką możliwość, ale umożliwia składanie dalszych zamówień.
+ 		1.1.3  UC Autor: Paweł Pelczar Przypadek użycia "Podzielenie rachunku"- Kelner rozdziela stolik którego rachunek ma być podzielony na osobne grupy. Do każdej z nich przyporządkowuje zamówione przez nich dania. Od teraz każdą grupę system traktować będzie jak osobny stolik w każdym aspekcie, wyjąwszy fakt, że fizycznie nie zajmuje ona dodatkowego stolika. Każda z grup kontynuuje zamawianie potraw, bądź też prosi o osobny rachunek.
+ 		1.1.4  UC Autor: Paweł Pelczar Przypadek użycia "Zakończenie obsługi stolika"- Na prośbę klienta kelner wysyła żądanie drukowania rachunku. System informuje go kiedy ta czynność się zakończy. Kelner przynosi następnie rachunek do stolika, a jeśli przekroczona została graniczna wartość zamówienia, dyskretnie upewnia się, że rachunek został uregulowany. W przeciwnym wypadku, lub kiedy już to zrobi, kelner zgłasza koniec obsługi i gotowość obsłużenia kolejnego stolika.
+
+ 	1.2  Komunikacja kelnera z zespołem
+
+ 		1.2.1  UC Autor: Paweł Pelczar Przypadek użycia "Ostrzeganie o rezerwacjach"- Kelner otrzymuje ostrzeżenie, jeśli stolik wciąż jest zajęty na godzinę przed tym, kiedy rozpocząć ma się kolejna rezerwacja. Kelner informuje o tym gości, którzy następnie podejmują decyzje, czy chcą przesiąść się do innego, wolnego stolika, czy też wolą skrócić wizytę. Następnie kelner informuje system o zmianie stolika, lub też kończy obsługę.
+ 		1.2.2  UC Autor: Paweł Pelczar Przypadek użycia "Przyjęcie reklamacji  i komentarzy"- W dowolnym momencie obsługi na żądanie klienta kelner przyjmuje reklamację, lub komentarz do zamówienia. Komentarz zapisywany jest przez system w zamówieniu i jest dostępny dla pracowników kuchni, którzy biorą go pod uwagę przy przygotowaniu potraw. Reklamacja trafia bezpośrednio do szefa kuchni, który zajmuje się jej rozpatrzeniem, a także do ogólnego rejestru wraz z identyfikatorem przyjmującego ją kelnera. System informuje o decyzji szefa kuchni kelnera, który następnie podejmuje odpowiednie kroki.
+
+ 2  Synchronizacja działań w kuchni i komunikacja zresztą zespołu.
+
+ 	2.1  Komunikacja z kelnerem
+
+ 		2.1.1  UC Autor: Paweł Pelczar Przypadek użycia "Przyjęcie zamówienia od kelnera"- Kiedy kelner prześle zamówienie złożone przez klienta do kuchni system rozbija je na stanowiska kucharzy i informuje każdego z nich, jaką potrawę ma następnie przygotować. Jeśli kucharze są aktualnie zajęci system dodaje potrawę do kolejki danego stanowiska. Zakończywszy pracę nad danym elementem zamówienia kucharz zgłasza to do systemu przez prosty, higieniczny interfejs na swoim stanowisku.
+
+ 		2.1.2   UC Autor: Paweł Pelczar Przypadek użycia "Zgłoszenie zapotrzebowania na kelnera"- Kiedy kucharz z danego stanowiska  głosi ukończenie przygotowania potrawy system informuje o tym kelnera przesyłając komunikat na jego urządzenie przenośne. W miarę możliwości wybierany jest kelner przypisany do stolika, który złożył zamówienie, a jeśli to niemożliwe system według podanych kryteriów wybiera jednego z pozostałych wolnych kelnerów.
+
+ 	2.2  Komunikacja ze spiżarnią
+
+		2.2.1   UC Autor: Paweł Pelczar Przypadek użycia "Wysłanie zapotrzebowania na składniki"- Otrzymawszy zamówienie od kelnera system sprawdza w bazie danych ilość składników konieczną do jego przyrządzenia. Następnie listę tych składników, wraz z wymaganą ich ilością przesyła do spiżarni jako żądanie dostarczenia. Komputer w spiżarni informuje jakie składniki należy dostarczyć do kuchni.
+
+ 3  Kontrola stanu spiżarni i wydawanie składników do kuchni
+
+ 	3.1  Wydawanie składników do kuchni
+
+ 		3.1.1  UC Autor: Paweł Pelczar Przypadek użycia "Zgłoszenie braku składnika potrawy"- Kiedy spiżarnia zarejestruje zużycie całego zapasu danego składnika przesyła powiadomienie do wszystkich kelnerów, aby polecali wybraną według zdefiniowanych wcześniej kryteriów potrawę zamiast tych zawierających brakujący składnik. Następnie informacja o braku składnika wysyłana jest do komputera centralnego, który zmodyfikuje menu tak, aby nie figurowały w nim potrawy wymagające brakującego składnika.
+
+ 	3.2  Kontrola stanu spiżarni
+
+ 		3.2.1  UC Autor: Paweł Pelczar Przypadek użycia "Zgłoszenie niskiego stanu zaopatrzenia"- W momencie gdy ogólny stan zaopatrzenia będzie niższy niż przewidziany próg tolerancji spiżarnia zgłosi to do komputera centralnego, który przetworzy informacje na zamówienie wysyłane do kontraktowego dostawcy w celu zapewnienia ciągłości dostaw składników.
+ 		3.2.2  UC Autor: Paweł Pelczar Przypadek użycia "Uzależnienie menu od stanu spiżarni"- otrzymawszy zgłoszenie o braku danego składnika komputer centralny sprawdza książkę z przepisami i usuwa z menu te pozycje, których przygotowanie wymaga brakującego składnika. Następnie aktualizuje menu informując kelnerów o wprowadzonej zmianie. Jeśli braki danego składnika powtarzają się często komputer sugeruje właścicielowi zwiększenie bieżącego zapasu składnika.
+
+ 4  Synchronizacja działów i usługi zewnętrzne
+
+ 	4.1  Synchronizacja kelnerów
+
+ 		4.1.1  UC Autor: Paweł Pelczar Przypadek użycia "rezerwacje i obłożenie stolików"- otrzymawszy od kelnera, lub zewnętrznego systemu rejestracji informację o rezerwacji stolika system sprawdza, czy w żądanym terminie dostępne są wolne stoliki. Jeśli tak- zgłasza dany stolik jako zarezerwowany w określonym przedziale czasowym, w przeciwnym wypadku informuje o najbliższej możliwej dacie rejestracji.
+ 		4.1.2  UC Autor: Paweł Pelczar Przypadek użycia "synchronizacja zgłoszeń kelnerów"- system rejestruje każdą akcję kelnera- zgłoszenie obsługi stolika, jej zakończenie, odpowiedź na zgłoszenie kuchni i inne. Na podstawie zgłoszeń, oraz określonych wcześniej kryteriów system rozdziela zgłoszenia pomiędzy klientów tak, by obłożenie było optymalne.
+Korekta: Mateusz Malisz
+
+
+	Use case 1.1.1: Zgłoszenie obsługi stolika.  Autor: Paweł Pelczar
+
+Aktor podstawowy (Primary actor): Kelner
+
+Główni odbiorcy i oczekiwania względem systemu:
+
+Klient- oczekuje bezproblemowej obsługi, kategorycznie wykluczone są błędy i nieścisłości w zamówieniu. Czas obsługi uzależniony jest od klienta, czas oczekiwania powinien być możliwie niewielki
+Kelner- oczekuje szybkiego i niezawodnego podziału zadań, który z jednej strony zminimalizuje przestoje, a z drugiej sprawi, że żaden kelner nie będzie obciążony ponad siły
+Właściciel- chce osiągnąć możliwie duży zysk przy zainwestowanych środkach, zależy mu więc na jak najsprawniejszym wykorzystaniu czasu pracy zatrudnionych kelnerów.
+Kucharze- chcą otrzymywać zamówienia tak szybko, jak to możliwe, aby rozkładając je w czasie uniknąć dużych partii dań, które musieliby przygotować naraz.
+
+Warunki wstępne: Kelner jest zidentyfikowany i przeprowadzone zostało uwierzytelnienie, klienci zajęli miejsca w restauracji.
+
+Warunki końcowe: Kelner jest przypisany do danego stolika i rozpoczyna odbieranie 
+
+Scenariusz główny (ścieżka podstawowa)
+
+1. Klient przywołuje kelnera.
+2. Kelner odpowiada na sygnał na urządzeniu przenośnym zgłaszając to za pośrednictwem urządzenia przenośnego.
+3. System sprawdza, czy dany stolik nie został uprzednio zarezerwowany.
+4. System rejestruje kelnera jako obsługującego dany stolik.
+5. System wycofuje komunikaty z urządzeń przenośnych innych kelnerów.
+6. Kelner podchodzi do stolika, przedstawia się i oferuje kartę dań
+
+Rozszerzenia (ścieżki alternatywne):
+
+*a W dowolnym czasie kiedy klient rezygnuje z rezerwacji:
+Aby zapewnić właściwą kontrolę obłożenia stolików konieczne jest stałe monitorowanie, czy stolik jest zajęty.
+1. Z momentem wycofania przez klienta rezerwacji system wycofuje, jeśli takie są, wszystkie zgłoszenia na przenośnych terminalach.
+2. System wycofuje rezerwację danego klienta- jego stolik na powrót staje się stolikiem wolnym.
+
+2a Kliku kelnerów jednocześnie odpowiada na zgłoszenie w urządzeniu przenośnym.
+1. System rejestruje wszystkie odpowiedzi kelnerów udzielone w ustalonym przedziale czasowym.
+2. Za pomocą wcześniej sprecyzowanego zestawu kryteriów system dokonuje wyboru kelnera, którego zgłoszenie zostanie uznane.
+3. Kelner, którego zgłoszenie zostało wybrane otrzymuje powiadomienie.
+4. Reszta kelnerów wraca do poprzednich zajęć.
+
+3a Stolik, przy którym siedli klienci został już uprzednio zarezerwowany.
+1. Dokonuje się sprawdzenie, czy rezerwacja nie pokrywa się czasowo z wizytą nowych klientów.
+
+1a Rezerwacja pokrywa się a goście proszeni są o zmianę stolika.
+
+2. Goście informowani są o godzinie rezerwacji. Przed nadejściem ustalonej godziny, jeśli jeszcze nie opuścili lokalu są informowani o nadchodzącym terminie i zapraszani do osobnego stolika.
+
+4a Kelner pełni w restauracji inne funkcje poza obsługą stolików
+1. Stolik jest przypisywany pracownikowi na tych samych zasadach, co innym kelnerom.
+2. W momencie, gdy pracownika wzywają pilniejsze zajęcia sygnalizuje on to na swoim urządzeniu przenośnym, a system wyznacza do obsługi stolika kolejnego pracownika, jak w punkcie pierwszym przypadku użycia.
+
+
+Wymagania specjalne:
+Kelner musi dysponować łatwym w obsłudze, higienicznym urządzeniem przenośnym mogącym połączyć się z resztą systemu restauracji. 
+Cała operacja musi dokonać się w mniej, niż pół minuty.
+Kryteria wyboru kelnerów podczas jednoczesnego zgłoszenia muszą być wcześniej przedstawione.
+
+Wymagania technologiczne:
+Połączenie kelnera z siecią restauracji musi być dobrze zabezpieczone
+Urządzenie musi być odporne na zabrudzenia, zalanie i upuszczenie, oraz dawać się łatwo przyczepiać do ubrania, aby kelner miał wolne ręce.
+
+
+
+Use case 3.13: Uzależnienie menu od stanu spiżarni. Autor: Paweł Pelczar
+
+Aktor podstawowy (Primary actor): Komputer centralny.
+
+Główni odbiorcy i oczekiwania względem systemu:
+Kelnerzy- oczekują natychmiastowego powiadomienia o zmianach w menu, aby uniknąć niezręczności związanych z proponowaniem klientowi niedostępnego dania.
+Klient- oczekuje profesjonalnej, poinformowanej obsługi portafiącej doradzić w kwestii wyboru dań
+Właściciel- żąda informacji na temat przebiegu zmian menu w ciągu dnia, aby zoptymalizować zaopatrzenie restauracji
+
+Warunki wstępne: System komputerowy restauracji działa prawidłowo, uwierzytelniono klientów, zamówiono danego dnia pewną liczbę potraw, ustalono kryteria zaopatrzenia restauracji.
+
+Warunki końcowe: Stan menu odpowiada faktycznym możliwościom logistycznym restauracji w danym momencie. Kelnerzy są informowani na bieżąco o zmianach w karcie dań, a sama historia zmian przechowywana do wglądu właściciela.
+
+Scenariusz główny (ścieżka podstawowa):
+
+1. System informuje o braku jednego ze składników w spiżarni, jak w UC 3.1.1.
+2. Zgłoszenie przyjmowane jest przez centralny komputer systemu.
+3. Komputer przetwarza zgłoszenie eliminując z menu potrawy wymagające brakującego składnika.
+4. Nowe menu przesyłane jest do urządzeń przenośnych, które zwracają potwierdzenie wykonania operacji.
+5. Kelnerzy informowani są o zmianie menu za pośrednictwem urządzeń przenośnych.
+6. Zmiana w menu dopisywana jest do historii zmian.
+7. Na koniec dnia system analizuje zmiany i stara się zasugerować zmiany w zaopatrzeniu w oparciu o wcześniej ustalone kryteria.
+
+Rozszerzenia (ścieżki alternatywne):
+*a. W dowolnym momencie kiedy urządzenie nie zwróci potwierdzenia synchronizacji z głównym komputerem:
+1. Należy zapewnić synchronizację terminala z głównym komputerem. W tym celu właściciel urządzenia wzywany jest do jego ponownego uruchomienia.
+2. Informacja o awarii zapisywana jest w bazie.
+2a. Zgłoszenie braku tego składnika zostało już przyjęte
+1. To i kolejne zgłoszenia są ignorowane.
+2. System ponownie sprawdza synchronizację menu w głównej bazie z menu w urządzeniach przenośnych.
+3. Informacja o problemie zapisywana jest w głównej bazie.
+2b. Zgłoszenie było wynikiem błędu.
+1. Uprawniony pracownik ręcznie usuwa zgłoszenie.
+2. Błąd zapisywany jest w bazie.
+3a. Wyeliminowana została ostatnia dostępna potrawa.
+1. System informuje kelnerów o zaistniałym problemie polecając im przeprosić gości
+2. System informuje właściciela o krytycznych brakach w zaopatrzeniu uniemożliwiających funkcjonowanie restauracji.
+
+
+5a. Kelner nie potwierdził przyjęcia do wiadomości zmiany w menu.
+1. Wysłane zostaje powtórne przypomnienie
+1a. Kelner nadal nie potwierdza zgłoszenia
+1. Kelner jest w trybie pilnym wzywany do wyjaśnienia postępowania.
+2. Opieszałość kelnera jest odnotowywana w jego aktach.
+7a. Sytuacja braku danych składników powtarza się z rzędu więcej razy, niż dopuszczono.
+1. Właściciel poza zwyczajnym monitem dostaje komunikat specjalny o wcześniej ustalonej treści.
+
+Wymagania specjalne:
+Kelner musi dysponować łatwym w obsłudze, higienicznym urządzeniem przenośnym łączącym się w czasie rzeczywistym z resztą systemu restauracji i obsługującym komunikację obustronną. 
+
+Wymagania technologiczne, oraz ograniczenia na wprowadzane dane:
+Należy zastosować serializację danych w komunikatach systemowych w taki sposób, żeby były łatwe w interpretowaniu przez inne komputery systemu, a w formie zarchiwizowanej czytelne dla człowieka.
+Konieczne jest prowadzenie baz danych w których zapisywane są wynikłe problemy.
+
+Kwestie otwarte:
+Jak rozwiązujemy problemy z komunikacją urządzeń przenośnych?
+Jak zachęcamy właściciela do powzięcia kroków w celu uregulowania zapotrzebowań?
+
+	Use Case  1.1.2:  Przyjęcia zamówienia. Autor: Paweł Pelczar
+
+Aktor podstawowy (Primary actor): Kelner
+
+Główni odbiorcy i oczekiwania względem systemu
+Klient oczekuje, że jego zamówienie zostanie zapisane dokładnie i ze szczegółami, oraz nie zostaje zmienione w toku realizacji.
+Kelner oczekuje, że przyjmowanie i ewentualna korekta zamówienia odbędzie się szybciej, sprawniej i bardziej niezawodnie, niż przy użyciu analogowych notatników.
+Kucharze chcą otrzymać zamówienie szybciej, żądają większej czytelności i podziału zamówienia na dania, które od razu zostaną dodane do kolejki odpowiednich stanowisk
+
+Warunki wstępne: Kasjer jest zidentyfikowany i przypisany do danego stolika. Goście zapoznali się z kartą dań i są gotowi do złożenia zamówienia. Kelner został już wezwany do stolika.
+
+Warunki końcowe: zamówienie złożone jest szybko i bez przekłamań. Dzięki elektronicznej formie zapisu jest czytelne i gotowe do wysłania do kuchni.
+
+Scenariusz główny (ścieżka podstawowa):
+
+1. Klienci zgłaszają gotowość do złożenia zamówienia.
+2. Kelner przystępuje do przyjęcia zamówienia i zapisuje je na urządzeniu przenośnym. 
+Krok drugi jest powtarzany aż do wyczerpania zamówień.
+3. Kelner odczytuje kolejno zamówienia, aby upewnić się, że zostały zapisane prawidłowo.
+4. Za pomocą urządzenia przenośnego kelner potwierdza poprawność zamówień i tym samym przysyła je do systemu
+5. Kelner pyta klientów, czy chcą zamknąć rachunek, czy decydują się z tym poczekać, lub też go podzielić.
+
+Rozszerzenia (ścieżki alternatywne):
+*a. W dowolnym momencie  przed wysłaniem zamówienia do systemu:
+	 Klient może zrezygnować z całego zamówienia, bądź jego części, albo dodać kolejną potrawę.
+
+1. Kelner usuwa żądaną potrawę z zamówienia, bądź dodaje nową
+2. Kelner po raz kolejny powtarza zamówienie w celu zweryfikowania jego poprawności.
+
+5a Przekroczenie granicznej wartości rachunku
+1. W momencie przekroczenia zdefiniowanej wcześniej, granicznej wartości rachunku urządzenie przenośne automatycznie zamyka rachunek i informuje o tym kelnera.
+2. Kelner daje znać klientom, że przy tak obszernym zamówieniu konieczne jest zastosowanie specjalnej, zdefiniowanej wcześniej polityki.
+5b Zamknięcie rachunku 
+1. Klient prosi o zamknięcie rachunku
+2. Kelner za pomocą urządzenia przenośnego zamyka rachunek i przygotowuje się do czynności z UC 1.1.4
+5c Podzielenie rachunku
+1. Kelner wykonuje czynności przewidziane w UC 1.1.4
+
+Wymagania specjalne:
+Kelner musi dysponować łatwym w obsłudze, higienicznym urządzeniem przenośnym łączącym się w czasie rzeczywistym z resztą systemu restauracji i obsługującym komunikację obustronną. 
+Konieczna jest możliwość wyłączania konkretnych składników z potrawy, albo dodawania kolejnych
+
+Wymagania technologiczne, oraz ograniczenia na wprowadzane dane:
+Należy zastosować serializację danych w komunikatach systemowych w taki sposób, żeby były łatwe w interpretowaniu przez inne komputery systemu, a w formie zarchiwizowanej czytelne dla człowieka.
+
+Kwestie otwarte:
+Jakie składniki można uznać za opcjonalne, a z jakich nie można zrezygnować?
+Jakie kroki przedsięwziąć, aby upewnić się, że rachunki powyżej wartości granicznej zostaną obdarzone szczególną uwagą.
