@@ -1,0 +1,72 @@
+Restaruracja
+
+Autorzy:
+
+Paweł Pelczar
+Mateusz Malisz
+Piotr Ryży
+
+
+
+
+
+
+
+
+Zbiór przypadków użycia w formie skróconej
+
+
+
+Spis treści:
+
+ 1  Obsługa stolików przez kelnera za pomocą urządzenia przenośnego.
+ 1.1  Komunikacja kelnera z klientem
+ 1.1.1  Przypadek użycia "Zgłoszenie obsługi stolika"
+ 1.1.2  Przypadek użycia "Przyjęcia zamówienia"
+ 1.1.3  Przypadek użycia "Podzielenie rachunku"
+ 1.1.4  Przypadek użycia "Zakończenie obsługi stolika"
+ 1.2  Komunikacja kelnera z zespołem
+ 1.2.1  Przypadek użycia "Ostrzeganie o rezerwacjach"
+ 1.2.2  Przypadek użycia "Przyjęcie reklamacji  i komentarzy"
+ 2  Synchronizacja działań w kuchni i komunikacja zresztą zespołu.
+ 2.1  Komunikacja z kelnerem
+ 2.1.1  Przypadek użycia "Przyjęcie zamówienia od kelnera"
+ 2.1.2  Przypadek użycia "Zgłoszenie zapotrzebowania na kelnera"
+ 2.2  Komunikacja ze spiżarnią
+ 2.2.1  Przypadek użycia "Wysłanie zapotrzebowania na składniki"
+ 3  Kontrola stanu spiżarni i wydawanie składników do kuchni
+ 3.1  Wydawanie składników do kuchni
+ 3.1.1  Przypadek użycia "Zgłoszenie braku składnika potrawy"
+ 3.1.2  Przypadek użycia "Zgłoszenie niskiego stanu zaopatrzenia"
+ 3.1.3  Przypadek użycia "Uzależnienie menu od stanu spiżarni"
+ 4  Synchronizacja działów i usługi zewnętrzne
+ 4.1  Synchronizacja kelnerów
+ 4.1.1  Przypadek użycia "rezerwacje i obłożenie stolików"
+ 4.1.2  Przypadek użycia "synchronizacja zgłoszeń kelnerów"
+Słownik:
+
+ 1  Obsługa stolików przez kelnera za pomocą urządzenia przenośnego.
+ 1.1  Komunikacja kelnera z klientem
+ 1.1.1  UC Przypadek użycia "Zgłoszenie obsługi stolika"- Kelner odbiera zgłoszenie i podchodzi do zajętego przez klientów stolika. Sprawdza, czy dany stoliknie jest tego dnia zarezerwowany i system wysyła mu informację zwrotną. W wypadku istnienia rezerwacji, która mogłaby kolidować z wizytą gości, przesadza ich do innego stolika. Wysyła następnie do systemu informację,że ustanawia się kelnerem prowadzącym obsługę danego stolika i zaznajamia gości z kartą dań.
+ 1.1.2  UC Przypadek użycia "Przyjęcia zamówienia"- Kelner podchodzi do stolika zgłaszającego gotowość do złożenia zamówienia. Odbiera wszystkie zamówienia i przesyła je do systemu jako zamówienia przypisane do danego stolika. System przesyła następnie złożone zamówienie do dalszego przetworzenia. W wypadku przekroczenia granicznej wartości zamówienia system automatycznie zamyka rachunek, w przeciwnym wypadku daje taką możliwość, ale umożliwia składanie dalszych zamówień.
+ 1.1.3  UC Przypadek użycia "Podzielenie rachunku"- Kelner rozdziela stolik którego rachunek ma być podzielony na osobne grupy. Do każdej z nich przyporządkowuje zamówione przez nich dania. Od teraz każdą grupę system traktować będzie jak osobny stolik w każdym aspekcie, wyjąwszy fakt, że fizycznie nie zajmuje ona dodatkowego stolika. Każda z grup kontynuuje zamawianie potraw, bądź też prosi o osobny rachunek.
+ 1.1.4  UC Przypadek użycia "Zakończenie obsługi stolika"- Na prośbę klienta kelner wysyła żądanie drukowania rachunku. System informuje go kiedy ta czynność się zakończy. Kelner przynosi następnie rachunek do stolika, a jeśli przekroczona została graniczna wartość zamówienia, dyskretnie upewnia się, że rachunek został uregulowany. W przeciwnym wypadku, lub kiedy już to zrobi, kelner zgłasza koniec obsługi i gotowość obsłużenia kolejnego stolika.
+ 1.2  Komunikacja kelnera z zespołem
+ 1.2.1  UC Przypadek użycia "Ostrzeganie o rezerwacjach"- Kelner otrzymuje ostrzeżenie, jeśli stolik wciąż jest zajęty na godzinę przed tym, kiedy rozpocząć ma się kolejna rezerwacja. Kelner informuje o tym gości, którzy następnie podejmują decyzje, czy chcą przesiąść się do innego, wolnego stolika, czy też wolą skrócić wizytę. Następnie kelner informuje system o zmianie stolika, lub też kończy obsługę.
+ 1.2.2  UC Przypadek użycia "Przyjęcie reklamacji  i komentarzy"- W dowolnym momencie obsługi na żądanie klienta kelner przyjmuje reklamację, lub komentarz do zamówienia. Komentarz zapisywany jest przez system w zamówieniu i jest dostępny dla pracowników kuchni, którzy biorą go pod uwagę przy przygotowaniu potraw. Reklamacja trafia bezpośrednio do szefa kuchni, który zajmuje się jej rozpatrzeniem, a także do ogólnego rejestru wraz z identyfikatorem przyjmującego ją kelnera. System informuje o decyzji szefa kuchni kelnera, który następnie podejmuje odpowiednie kroki.
+ 2  Synchronizacja działań w kuchni i komunikacja zresztą zespołu.
+ 2.1  Komunikacja z kelnerem
+ 2.1.1  UC Przypadek użycia "Przyjęcie zamówienia od kelnera"- Kiedy kelner prześle zamówienie złożone przez klienta do kuchni system rozbija je na stanowiska kucharzy i informuje każdego z nich, jaką potrawę ma następnie przygotować. Jeśli kucharze są aktualnie zajęci system dodaje potrawę do kolejki danego stanowiska. Zakończywszy pracę nad danym elementem zamówienia kucharz zgłasza to do systemu przez prosty, higieniczny interfejs na swoim stanowisku.
+ 2.1.2   UC Przypadek użycia "Zgłoszenie zapotrzebowania na kelnera"- Kiedy kucharz z danego stanowiska  głosi ukończenie przygotowania potrawy system informuje o tym kelnera przesyłając komunikat na jego urządzenie przenośne. W miarę możliwości wybierany jest kelner przypisany do stolika, który złożył zamówienie, a jeśli to niemożliwe system według podanych kryteriów wybiera jednego z pozostałych wolnych kelnerów.
+ 2.2  Komunikacja ze spiżarnią
+ 2.2.1   UC Przypadek użycia "Wysłanie zapotrzebowania na składniki"- Otrzymawszy zamówienie od kelnera system sprawdza w bazie danych ilość składników konieczną do jego przyrządzenia. Następnie listę tych składników, wraz z wymaganą ich ilością przesyła do spiżarni jako żądanie dostarczenia. Komputer w spiżarni informuje jakie składniki należy dostarczyć do kuchni.
+ 3  Kontrola stanu spiżarni i wydawanie składników do kuchni
+ 3.1  Wydawanie składników do kuchni
+ 3.1.1  UC Przypadek użycia "Zgłoszenie braku składnika potrawy"- Kiedy spiżarnia zarejestruje zużycie całego zapasu danego składnika przesyła powiadomienie do wszystkich kelnerów, aby polecali wybraną według zdefiniowanych wcześniej kryteriów potrawę zamiast tych zawierających brakujący składnik. Następnie informacja o braku składnika wysyłana jest do komputera centralnego, który zmodyfikuje menu tak, aby nie figurowały w nim potrawy wymagające brakującego składnika.
+ 3.2  Kontrola stanu spiżarni
+ 3.2.1  UC Przypadek użycia "Zgłoszenie niskiego stanu zaopatrzenia"- W momencie gdy ogólny stan zaopatrzenia będzie niższy niż przewidziany próg tolerancji spiżarnia zgłosi to do komputera centralnego, który przetworzy informacje na zamówienie wysyłane do kontraktowego dostawcy w celu zapewnienia ciągłości dostaw składników.
+ 3.2.2  UC Przypadek użycia "Uzależnienie menu od stanu spiżarni"- otrzymawszy zgłoszenie o braku danego składnika komputer centralny sprawdza książkę z przepisami i usuwa z menu te pozycje, których przygotowanie wymaga brakującego składnika. Następnie aktualizuje menu informując kelnerów o wprowadzonej zmianie. Jeśli braki danego składnika powtarzają się często komputer sugeruje właścicielowi zwiększenie bieżącego zapasu składnika.
+ 4  Synchronizacja działów i usługi zewnętrzne
+ 4.1  Synchronizacja kelnerów
+ 4.1.1  UC Przypadek użycia "rezerwacje i obłożenie stolików"- otrzymawszy od kelnera, lub zewnętrznego systemu rejestracji informację o rezerwacji stolika system sprawdza, czy w żądanym terminie dostępne są wolne stoliki. Jeśli tak- zgłasza dany stolik jako zarezerwowany w określonym przedziale czasowym, w przeciwnym wypadku informuje o najbliższej możliwej dacie rejestracji.
+ 4.1.2  UC Przypadek użycia "synchronizacja zgłoszeń kelnerów"- system rejestruje każdą akcję kelnera- zgłoszenie obsługi stolika, jej zakończenie, odpowiedź na zgłoszenie kuchni i inne. Na podstawie zgłoszeń, oraz określonych wcześniej kryteriów system rozdziela zgłoszenia pomiędzy klientów tak, by obłożenie było optymalne.

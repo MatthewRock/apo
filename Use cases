@@ -1,0 +1,20 @@
+1. Aplikacja kelnera:
+	-zgłoszenie obsługi stolika
+	-przyjęcie zamówienia
+	-podzielenie rachunku
+	-przyniesienie rachunku i zakończenie obsługi stolika
+	-ostrzeganie o rezerwacjach stolików
+	-przyjęcie reklamacji i komentarzy
+2. Kuchnia:
+	-przyjęcie zamówienia od kelnera
+	-wysłanie zapotrzebowania na składniki do spiżarni
+	-zgłoszenie zapotrzebowania na kelnera
+	
+3. Spiżarnia:
+	-zgłoszenie braku składnika potrawy
+	-zgłoszenie niskiego stanu zaopatrzenia
+	
+4. Komputer centralny:
+	-uzależnienie menu od stanu spiżarni
+	-kontrola obłożenia stolików i synchronizacja zgłoszeń kelnerów
+	
